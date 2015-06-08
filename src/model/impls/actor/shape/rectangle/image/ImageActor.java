@@ -5,7 +5,7 @@ import javax.swing.ImageIcon;
 import model.ifaces.actor.shape.rectangle.image.ImageListener;
 import model.ifaces.actor.shape.rectangle.image.ImageModel;
 import model.impls.actor.shape.rectangle.RectangleActor;
-import announcer.Announcer;
+import util.announcer.Announcer;
 
 public class ImageActor extends RectangleActor implements ImageModel {
 

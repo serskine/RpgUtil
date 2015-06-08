@@ -5,7 +5,7 @@ import java.awt.Rectangle;
 
 import model.ifaces.actor.ActorListener;
 import model.ifaces.actor.ActorModel;
-import announcer.Announcer;
+import util.announcer.Announcer;
 
 public abstract class Actor implements ActorModel {
 

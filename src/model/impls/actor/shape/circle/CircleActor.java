@@ -6,7 +6,7 @@ import java.awt.Rectangle;
 import model.ifaces.actor.shape.circle.CircleListener;
 import model.ifaces.actor.shape.circle.CircleModel;
 import model.impls.actor.Actor;
-import announcer.Announcer;
+import util.announcer.Announcer;
 
 public class CircleActor extends Actor implements CircleModel {
 

@@ -7,7 +7,7 @@ import java.awt.Rectangle;
 import model.ifaces.actor.shape.rectangle.RectangleListener;
 import model.ifaces.actor.shape.rectangle.RectangleModel;
 import model.impls.actor.Actor;
-import announcer.Announcer;
+import util.announcer.Announcer;
 
 public class RectangleActor extends Actor implements RectangleModel {
 

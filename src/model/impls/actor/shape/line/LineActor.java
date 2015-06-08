@@ -7,7 +7,7 @@ import java.awt.geom.Line2D;
 import model.ifaces.actor.shape.line.LineListener;
 import model.ifaces.actor.shape.line.LineModel;
 import model.impls.actor.Actor;
-import announcer.Announcer;
+import util.announcer.Announcer;
 
 public class LineActor extends Actor implements LineModel {
 

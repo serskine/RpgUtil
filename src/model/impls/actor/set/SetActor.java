@@ -9,7 +9,7 @@ import model.ifaces.actor.ActorModel;
 import model.ifaces.actor.set.SetListener;
 import model.ifaces.actor.set.SetModel;
 import model.impls.actor.Actor;
-import announcer.Announcer;
+import util.announcer.Announcer;
 
 public class SetActor extends Actor implements SetModel {
 

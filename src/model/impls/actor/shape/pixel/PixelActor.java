@@ -6,7 +6,7 @@ import java.awt.Rectangle;
 import model.ifaces.actor.shape.pixel.PixelListener;
 import model.ifaces.actor.shape.pixel.PixelModel;
 import model.impls.actor.Actor;
-import announcer.Announcer;
+import util.announcer.Announcer;
 
 public class PixelActor extends Actor implements PixelModel {
 	

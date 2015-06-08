@@ -8,7 +8,7 @@ import model.ifaces.actor.set.SetModel;
 import model.ifaces.map.MapListener;
 import model.ifaces.map.MapModel;
 import model.impls.actor.set.SetActor;
-import announcer.Announcer;
+import util.announcer.Announcer;
 
 public class Map implements MapModel, SetListener {
 
