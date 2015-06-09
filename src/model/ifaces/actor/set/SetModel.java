@@ -1,5 +1,7 @@
 package model.ifaces.actor.set;
 
+import java.util.Set;
+
 import model.ifaces.actor.ActorListener;
 import model.ifaces.actor.ActorModel;
 import model.impls.actor.Actor;
@@ -11,5 +13,5 @@ public interface SetModel extends ActorModel, ActorListener {
 	public void addSetListener(SetListener listener);
 	public void removeSetListener(SetListener listener);
 	
-
+	public Set<ActorModel>	getChildren();
 }

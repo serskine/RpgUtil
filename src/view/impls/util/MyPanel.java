@@ -18,7 +18,7 @@ import javax.swing.event.MouseInputListener;
 
 import util.ddict.DDict;
 
-public class MyPanel<HmiType> extends javax.swing.JPanel implements
+public class MyPanel extends javax.swing.JPanel implements
 	ComponentListener,
 	MouseListener,
 	MouseMotionListener,

@@ -15,4 +15,5 @@ public interface ActorModel {
 	public boolean		containsPoint(Point pos);
 	
 	public void childUpdated(Actor source);
+	
 }

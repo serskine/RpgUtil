@@ -18,20 +18,25 @@ public class SetActor extends Actor implements SetModel {
 	
 	@Override
 	public void addActor(Actor actor) {
-		actors.add(actor);
-		listeners.announce().actorAdded(this, actor);
+		synchronized (actors) {
+			actors.add(actor);
+			listeners.announce().actorAdded(this, actor);
+		}
 	}
 	
 	@Override
 	public void removeActor(Actor actor) {
-		actors.remove(actors);
-		listeners.announce().actorRemoved(this, actor);
+		synchronized (actors) {
+			actors.remove(actors);
+			listeners.announce().actorRemoved(this, actor);
+		}
 	}
 	
 	@Override
 	public void addSetListener(SetListener listener) {
 		super.addListener(listener);
 		listeners.addListener(listener);
+		
 	}
 	
 	@Override
@@ -74,5 +79,13 @@ public class SetActor extends Actor implements SetModel {
 	@Override
 	public void changed(ActorModel actorModel) {
 		listeners.announce().actorChanged(this, actorModel);
+	}
+
+	@Override
+	public Set<ActorModel> getChildren() {
+		synchronized (actors) {
+			HashSet<ActorModel> copyActors = new HashSet<ActorModel>(actors);
+			return copyActors;
+		}
 	}
 }

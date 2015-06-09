@@ -52,5 +52,4 @@ public abstract class Actor implements ActorModel {
 		listeners.announce().changed(this);
 	}
 
-	
 }

@@ -65,7 +65,6 @@ public class Console implements ConsoleModel {
 	}
 
 	private void shrinkList() {
-		char c;
 		int index;
 		
 		while(lineCount >= getNumRows()) {
