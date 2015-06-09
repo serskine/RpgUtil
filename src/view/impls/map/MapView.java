@@ -1,15 +1,18 @@
 package view.impls.map;
 
+import java.awt.BorderLayout;
 import java.awt.Point;
 import java.awt.Rectangle;
 
 import javax.swing.JPanel;
+import javax.swing.JTree;
 
 import model.ifaces.map.MapModel;
 import model.impls.map.Map;
 import view.ifaces.map.MapHmiView;
+import view.impls.util.MyPanel;
 
-public class MapView extends JPanel implements MapHmiView {
+public class MapView extends MyPanel implements MapHmiView {
 
 	protected final		MapModel mapModel;
 	protected double	zoom = 1d;
@@ -22,6 +25,13 @@ public class MapView extends JPanel implements MapHmiView {
 	public MapView(MapModel mapModel) {
 		this.mapModel = mapModel;
 		mapModel.addMapListener(this);
+		setLayout(new BorderLayout(0, 0));
+		
+		JTree tree = new JTree();
+		add(tree, BorderLayout.EAST);
+		
+		JPanel panel = new JPanel();
+		add(panel, BorderLayout.CENTER);
 		System.err.println("Map view has null map model");
 	}
 	

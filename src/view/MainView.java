@@ -6,9 +6,13 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 import model.ifaces.MasterModel;
+import model.impls.Master;
 import view.impls.map.MapView;
 
 public class MainView extends JPanel {
+	public MainView() {
+		this(new Master());
+	}
 	public MainView(
 		MasterModel masterModel
 	) {
