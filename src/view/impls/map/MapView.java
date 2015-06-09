@@ -6,6 +6,7 @@ import java.awt.Rectangle;
 import javax.swing.JPanel;
 
 import model.ifaces.map.MapModel;
+import model.impls.map.Map;
 import view.ifaces.map.MapHmiView;
 
 public class MapView extends JPanel implements MapHmiView {
@@ -14,10 +15,14 @@ public class MapView extends JPanel implements MapHmiView {
 	protected double	zoom = 1d;
 	protected Point		locationOnCanvas = new Point(0,0);
 	
-	
+
+	public MapView() {
+		this(new Map());
+	}
 	public MapView(MapModel mapModel) {
 		this.mapModel = mapModel;
 		mapModel.addMapListener(this);
+		System.err.println("Map view has null map model");
 	}
 	
 	@Override
