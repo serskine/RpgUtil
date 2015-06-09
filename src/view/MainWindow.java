@@ -11,11 +11,14 @@ import java.awt.event.WindowListener;
 
 import javax.swing.JFrame;
 
+import model.ifaces.MasterModel;
+import model.impls.Master;
+
 public class MainWindow extends Applet implements WindowListener {
 	private static final long serialVersionUID = 1L;
 	
 	private JFrame 					mainFrame;
-
+	
 	/**
 	 * Launch the application.
 	 */
@@ -66,13 +69,15 @@ public class MainWindow extends Applet implements WindowListener {
 	 */
 	private void initialize() {
 
+		MasterModel masterModel = new Master();
+		
 		mainFrame = new JFrame();
 		mainFrame.setTitle("RPG Utilities");
 		mainFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		mainFrame.getContentPane().setLayout(new BorderLayout(0, 0));
 		mainFrame.setBounds(0, 0, 1383, 792);
 		
-		MainView mainPanel = new MainView();
+		MainView mainPanel = new MainView(masterModel);
 		mainFrame.getContentPane().add(mainPanel, BorderLayout.CENTER);
 	}
 

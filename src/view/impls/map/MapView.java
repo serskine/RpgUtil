@@ -17,6 +17,7 @@ public class MapView extends JPanel implements MapHmiView {
 	
 	public MapView(MapModel mapModel) {
 		this.mapModel = mapModel;
+		mapModel.addMapListener(this);
 	}
 	
 	@Override
