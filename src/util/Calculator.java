@@ -5,6 +5,19 @@ import java.util.Iterator;
 import java.util.Stack;
 
 public class Calculator {
+	public static enum TokenType {
+		NUMBER,
+		MULTIPLY,
+		DIVIDE,
+		ADDITION,
+		OPEN,
+		CLOSE,
+		SUBTRACT,
+		MODULUS,
+		EXPONENT,
+		ROLL
+	};
+	
 
 	public static final int roll(int n, int size) {
 		int sum = 0;
@@ -184,7 +197,7 @@ public class Calculator {
 					pushToken(postFix, topOp);
 				}
 			
-				if (tokenType != TokenType.close) {
+				if (tokenType != TokenType.CLOSE) {
 					pushOp(opStack, token);
 				} else {
 					popOp(opStack);
@@ -237,46 +250,46 @@ public class Calculator {
 			Double		A1, A2;
 			
 			switch(type) {
-				case number:
+				case NUMBER:
 					S.push(new Double(token));
 					break;
-				case addition:
+				case ADDITION:
 					A2 = S.pop();
 					A1 = S.pop();
 					S.push(new Double(A1.doubleValue() + A2.doubleValue()));
 					break;
-				case subtract:
+				case SUBTRACT:
 					A2 = S.pop();
 					A1 = S.pop();
 					S.push(new Double(A1.doubleValue() - A2.doubleValue()));
 					break;
-				case multiply:
+				case MULTIPLY:
 					A2 = S.pop();
 					A1 = S.pop();
 					S.push(new Double(A1.doubleValue() * A2.doubleValue()));
 					break;
-				case divide:
+				case DIVIDE:
 					A2 = S.pop();
 					A1 = S.pop();
 					S.push(new Double(A1.doubleValue() / A2.doubleValue()));
 					break;
-				case modulus:
+				case MODULUS:
 					A2 = S.pop();
 					A1 = S.pop();
 					S.push(new Double(A1.doubleValue() % A2.doubleValue()));
 					break;
-				case exponent:
+				case EXPONENT:
 					A2 = S.pop();
 					A1 = S.pop();
 					S.push(new Double(Math.pow(A1.doubleValue() , A2.doubleValue())));
 					break;
-				case roll:
+				case ROLL:
 					A2 = S.pop();
 					A1 = S.pop();
 					S.push(new Double(roll(A1.intValue() , A2.intValue())));
 					break;
-				case close:
-				case open:
+				case CLOSE:
+				case OPEN:
 				default:
 					break;
 
@@ -290,37 +303,24 @@ public class Calculator {
 		}
 	}
 
-	public	enum TokenType {
-		number,
-		multiply,
-		divide,
-		addition,
-		open,
-		close,
-		subtract,
-		modulus,
-		exponent,
-		roll
-	};
-	
-	public static final TokenType getTokenType(String S) {
-		if (S.equals("+"))	return TokenType.addition;
-		if (S.equals("-"))	return TokenType.subtract;
-		if (S.equals("*"))	return TokenType.multiply;
-		if (S.equals("x"))	return TokenType.multiply;
-		if (S.equals("X"))	return TokenType.multiply;
-		if (S.equals("/"))	return TokenType.divide;
-		if (S.equals("("))	return TokenType.open;
-		if (S.equals(")"))	return TokenType.close;
-		if (S.equals("%"))	return TokenType.modulus;
-		if (S.equals("^"))	return TokenType.exponent;
-		if (S.equals("d"))	return TokenType.roll;
-		if (S.equals("D"))	return TokenType.roll;
-		return TokenType.number;
+	public static final Calculator.TokenType getTokenType(String S) {
+		if (S.equals("+"))	return TokenType.ADDITION;
+		if (S.equals("-"))	return TokenType.SUBTRACT;
+		if (S.equals("*"))	return TokenType.MULTIPLY;
+		if (S.equals("x"))	return TokenType.MULTIPLY;
+		if (S.equals("X"))	return TokenType.MULTIPLY;
+		if (S.equals("/"))	return TokenType.DIVIDE;
+		if (S.equals("("))	return TokenType.OPEN;
+		if (S.equals(")"))	return TokenType.CLOSE;
+		if (S.equals("%"))	return TokenType.MODULUS;
+		if (S.equals("^"))	return TokenType.EXPONENT;
+		if (S.equals("d"))	return TokenType.ROLL;
+		if (S.equals("D"))	return TokenType.ROLL;
+		return TokenType.NUMBER;
 	}
 	
 	public static final boolean isOperand(TokenType T) {
-		return (	T == TokenType.number	);
+		return (	T == TokenType.NUMBER	);
 	}
 		
 	
@@ -370,9 +370,9 @@ public class Calculator {
 	}
 	
 	public static final boolean hasPrescedence(TokenType op1, TokenType op2) {
-		if	((op1 == TokenType.addition) || (op1 == TokenType.subtract))
+		if	((op1 == TokenType.ADDITION) || (op1 == TokenType.SUBTRACT))
 		{
-			if ((op2 == TokenType.addition) || (op2 == TokenType.subtract) || (op2 == TokenType.close))
+			if ((op2 == TokenType.ADDITION) || (op2 == TokenType.SUBTRACT) || (op2 == TokenType.CLOSE))
 			{
 				return true;
 			} 
@@ -381,9 +381,9 @@ public class Calculator {
 				return false;
 			}
 		} 
-		else if ((op1 == TokenType.multiply) || (op1 == TokenType.divide) || (op2 == TokenType.modulus) || (op2 == TokenType.roll))
+		else if ((op1 == TokenType.MULTIPLY) || (op1 == TokenType.DIVIDE) || (op2 == TokenType.MODULUS) || (op2 == TokenType.ROLL))
 		{
-			if ((op2 == TokenType.exponent) || (op2 == TokenType.open))
+			if ((op2 == TokenType.EXPONENT) || (op2 == TokenType.OPEN))
 			{
 				return false;
 			} 
@@ -392,9 +392,9 @@ public class Calculator {
 				return true;
 			}
 		} 
-		else if (op1 == TokenType.exponent)
+		else if (op1 == TokenType.EXPONENT)
 		{
-			if ((op2 == TokenType.exponent) || (op2 == TokenType.open))
+			if ((op2 == TokenType.EXPONENT) || (op2 == TokenType.OPEN))
 			{
 				return false;
 			} 
@@ -403,7 +403,7 @@ public class Calculator {
 				return true;
 			}
 		} 
-		else if (op1 == TokenType.open)
+		else if (op1 == TokenType.OPEN)
 		{
 			return false;
 		}
